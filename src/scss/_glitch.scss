@@ -1,0 +1,71 @@
+@import './variables';
+
+$glitch-height: 20px;
+$glitch-distance: 1px;
+$glitch-color: $gray-lightest;
+$glitch-bg-color: $gray-dark;
+$glitch-red: rgba(255,0,255,0.66);
+$glitch-blue: rgba(0,255,255,0.66);
+$glitch-speed: 30;
+
+@mixin glitch {
+  //color: $glitch-color;
+  position:relative;
+  margin:0 auto;
+}
+
+@mixin glitch-overlay($offset, $time, $color, $animation) {
+  line-height: 18px; //todo: track this down!
+  content:attr(data-glitch-text);
+  position:absolute;
+  left: $glitch-distance;
+  text-shadow: ($offset * $glitch-distance) 0 $color;
+  top:0;
+  color: $glitch-color;
+  background: $glitch-bg-color;
+  overflow:hidden;
+  clip:rect(0,100px,0,0); 
+  animation: $animation $time infinite linear alternate-reverse;
+}
+
+.glitch{
+  @include glitch;
+  &:after{
+    @include glitch-overlay(-1, 2s, $glitch-red, noise-anim-1);
+  }
+
+  &:before{
+    @include glitch-overlay(1, 3s, $glitch-blue, noise-anim-2);
+  }
+}
+
+.glitch-hover {
+  @include glitch;
+  &:hover {
+    &:after{
+      @include glitch-overlay(-1, 2s, $glitch-red, noise-anim-1);
+    }
+
+    &:before{
+      @include glitch-overlay(1, 3s, $glitch-blue, noise-anim-2);
+    }
+  }
+}
+
+@keyframes noise-anim-1{
+  $steps: $glitch-speed;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random($glitch-height)+px,999px,random($glitch-height)+px,0);
+    }
+  }
+}
+
+@keyframes noise-anim-2{
+  $steps: $glitch-speed;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random($glitch-height)+px,999px,random($glitch-height)+px,0);
+    }
+  }
+}

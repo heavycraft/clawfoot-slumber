@@ -1,0 +1,84 @@
+@import './scss/variables';
+@import './scss/glitch';
+@import './scss/shimmer';
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,400');
+
+// Fonts
+
+@font-face {
+  font-family: 'ClawfootSlumber';
+  src: url('assets/fonts/ClawfootSlumber.woff') format('woff'),
+  url('assets/fonts/ClawfootSlumber.ttf') format('truetype');
+}
+
+.clawfoot-font {
+    font-family: 'ClawfootSlumber';
+    text-transform: uppercase;
+    letter-spacing: 0.33rem;
+}
+
+.font-weight-light {
+    font-weight: 200;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+    letter-spacing: 0.33rem;
+    text-shadow: 1px 1px 1px $gray;
+}
+
+h1, .h1 {
+    margin-bottom: 2.5rem;
+}
+
+// Tables
+
+.table{
+    th, td {
+        border-top:1px solid fade-out($gray-dark, 0.8);
+    }
+
+}
+
+// General
+
+body {
+    background-color: $gray;
+    background-image: url('./assets/image/background.jpg');
+
+    color: $gray-lightest;
+}
+
+section, footer {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+a {
+    transition: color 750ms;
+}
+
+// Navbar Adjustment
+
+.navbar-offset {
+    margin-top: $navbar-height + $navbar-padding-y * 2;
+}
+
+// Video fix
+
+.video-wrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

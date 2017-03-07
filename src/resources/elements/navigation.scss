@@ -1,0 +1,60 @@
+@import '../../scss/variables';
+
+.nav { width: 100%; }
+
+.navbar-brand {
+  font-size: 2rem;
+  padding-left: 0.75rem;
+  svg {
+    vertical-align: middle;
+    path {
+      fill: $gray-lightest;
+    }
+  }
+}
+
+.nav-item {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  font-family: $headings-font-family;
+}
+
+.navbar-toggler {
+  border: none;
+  padding-top: 1rem;
+  &:focus { outline: none; }
+}
+
+.collapse.show {
+    width: 100%;
+    clear: both;
+    text-align: center;
+    .navbar-nav .nav-item{
+        +.nav-item{
+            //margin-left: 0;
+        }
+    }
+}
+
+#burger {
+  overflow:visible;
+  height: 1.66rem;
+  
+  .burger-ingredient {
+    fill: $gray-lightest;
+    width: 100%;
+    height: 20%;
+    transition: transform 500ms, opacity 250ms;
+  }
+  
+  #burger-patty { transform-origin: center center;}
+  #burger-top { transform-origin: 10px 10px;}
+  #burger-bottom { transform-origin: 10px 90px;}
+  
+  &.open{
+    #burger-patty { opacity: 0; transform: scale(0); }
+    #burger-top { transform: rotate(45deg) translate(16.5%, 0px);}
+    #burger-bottom { transform: rotate(-45deg) translate(16.5%, 0px);}
+  }
+  
+}
