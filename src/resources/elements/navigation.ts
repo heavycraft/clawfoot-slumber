@@ -32,7 +32,7 @@ export class Navigation {
 
     let scrollElement = document.scrollingElement || document.documentElement;
     let start = scrollElement.scrollTop;
-    let to = document.getElementById(anchor).offsetTop - 80;
+    let to = document.getElementById(anchor.replace('#','')).offsetTop - 80;
     if (start === to) { return; }
 
     let diff = to - scrollElement.scrollTop;
