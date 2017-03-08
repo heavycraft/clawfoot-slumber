@@ -60,7 +60,7 @@ export class FlickrService {
 
         if(extras) { this.params.extras = extras; }
 
-        this.getData('/', this.params, photoParse);
+        return this.getData('/', this.params, photoParse);
     }
 
     generateLink(photo: IFlickrPhoto, flickrSize: string): string {
