@@ -14,9 +14,10 @@
 }
 
 .nav-item {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 1.15rem;
+  padding-right: 1.15rem;
   font-family: $headings-font-family;
+  white-space: nowrap;
 }
 
 .navbar-toggler {

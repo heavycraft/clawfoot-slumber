@@ -2,91 +2,9 @@
   <require from="./main.css"></require>
   <require from="./resources/elements/navigation"></require>
   <require from="./resources/elements/eventtable"></require>
-  <navigation logo.bind="company.logo" header.bind="company.phone" items.bind="navItems" social.bind="social"></navigation>
-  <section id="music" class="navbar-offset">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center ">
-          <h1 class="text-uppercase font-weight-light">MUSIC</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 text-center">
-          <img class="img-fluid" style="max-height:40vh;" src="assets/image/album-cover.jpg" />
-          <p class="lead m-4">The album <strong>Open Wide to the Demons Who Crave a Word With the Ghost of Your Heart</strong></p>
-          <p>Available now on:</p>
-          <a href="https://itunes.apple.com/us/album/open-wide-to-demons-who-crave-word-ghost-your-heart/id1016900195"><img width="100" src="assets/image/itunes.svg" alt="iTunes" align="middle" class="mx-3" /></a>
-          <a href="https://play.spotify.com/album/0qc8OVeyZFO9qQ2UKrjMWH"><img width="100" src="assets/image/spotify.svg" alt="Spotify"  align="middle" class="mx-3" /></a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="video" style="background-color:rgba(255,200,255,0.1)">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center ">
-          <h1 class="text-uppercase font-weight-light">VIDEO</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="video-wrapper">
-            <iframe src="https://player.vimeo.com/video/148970044?color=ff0179&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="about">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center ">
-          <h1 class="text-uppercase font-weight-light">ABOUT</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <p class="lead">Portland power-trio Clawfoot Slumber combines ambience with courageous psychedelic-rock themes, landing them somewhere between the ethereal and concrete.<p>
-
-<p class="font-weight-light">Experimenting with both driving anthems and gentle ballads the three-piece invokes a near cinematic experience akin to a score from a David Lynch film. Innovative and minimalistic instrumentation provides a sound that is crystal clear, yet possesses meticulously crafted, Rodin-like patina. Lyrically, the leading male vocal illustrates assorted moral allegories with unassuming honesty, similar to the work of Nick Drake. The feminine vocal counter-part remains ever close-by, creating careful swells and breathtaking harmonies. Culminating in a presentation as varied as that of Portishead, each Clawfoot Slumber performance is provocative and highly memorable. </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="tour" style="background-color:rgba(255,200,255,0.1)">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center ">
-          <h1 class="text-uppercase font-weight-light">TOUR</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-lg-6 text-center">
-          <event-table title="the future" events.bind="events.future"></event-table>
-        </div>
-        <div class="col-12 col-lg-6 text-center">
-          <event-table title="the past" events.bind="events.past"></event-table>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center ">
-          <h1 class="text-uppercase font-weight-light">contact</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 text-center">
-          <strong>e.</strong> <a class="glitch-hover" href="mailto:alexcallenberger@gmail.com" data-glitch-text="alexcallenberger@gmail.com">alexcallenberger@gmail.com</a>
-            <ul class="list-inline mt-5 row">
-              <li class="list-inline-item col m-3" repeat.for="platform of social" ><a href.bind="platform.link"><i class="fa ${platform.icon} fa-5x"></i></a></li>
-            </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+  <navigation logo.bind="company.logo" header.bind="company.phone" items.bind="navItems" social.bind="social" router.bind="router"></navigation>
+  <router-view></router-view>
+  
   <footer class="bg-inverse">
     <div class="container">
       <div class="row">

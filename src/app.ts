@@ -1,15 +1,19 @@
 import { inject } from 'aurelia-framework';
-import { BandsintownService } from './bandsintown.service';
+import { RouterConfiguration, Router } from 'aurelia-router';
+import { FlickrService } from './flickr.service';
 
-@inject(BandsintownService)
+@inject(FlickrService)
 export class App {
 
+  router: Router;
+
   navItems = [
-    { title: 'music', href: '#music', active: false },
-    { title: 'video', href: '#video', active: false },
-    { title: 'about', href: '#about', active: false },
-    { title: 'tour', href: '#tour', active: false },
-    { title: 'contact', href: '#contact', active: false },
+    { title: 'music',     route: 'home',   anchor: 'music',    active: false },
+    { title: 'video',     route: 'home',   anchor: 'video',    active: false },
+    { title: 'about',     route: 'home',   anchor: 'about',    active: false },
+    { title: 'tour',      route: 'home',   anchor: 'tour',     active: false },
+    { title: 'contact',   route: 'home',   anchor: 'contact',  active: false },
+    { title: 'press kit', route: 'press',  anchor: false,      active: false}
   ];
 
   social = [
@@ -20,12 +24,25 @@ export class App {
     { title: 'Spotify', link: 'https://play.spotify.com/artist/5Hm3XSRX8PRpKaxVMh0Qys', icon: 'fa-spotify' }
   ];
 
-  events = { past: [], future: []};
-
-  constructor(private bandsintown: BandsintownService) {
-    bandsintown.configure({artistname: 'ClawfootSlumber', app_id: 'CLAWFOOT_SLUMBER'});
-    bandsintown.getEvents('past', 5).then( events => this.events.past = events);
-    bandsintown.getEvents('upcoming').then( events => this.events.future = events);
+  constructor(private flickr: FlickrService) {
+    flickr.getPublicPhotos(10,1,'url_l');
   }
 
+  configureRouter(config: RouterConfiguration, router: Router) {
+    this.router = router;
+    config.title = 'Clawfoot Slumber';
+    config.addPipelineStep('postcomplete', PostCompleteStep);
+    config.map([
+      { route: ['', 'home'],          name: 'home',           moduleId: 'home/index',      nav: true,     title: 'Home' },
+      { route: 'press',               name: 'press',          moduleId: 'press/index',     nav: true,     title: 'Press Kit' },
+    ]);
+  }
+
+}
+
+class PostCompleteStep {
+  run(routingContext, next) {
+    window.scrollTo(0, 0);
+    return next();
+  }
 }
