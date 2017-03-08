@@ -1,6 +1,6 @@
-import { inject } from 'aurelia-framework';
-import { HttpClient } from 'aurelia-http-client';
+import { inject, NewInstance } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
+import { HttpService } from './http.service';
 import * as process from './process.env';
 
 const BASE_URL = process.env.FLICKR_BASE_URL;
@@ -18,28 +18,19 @@ interface IFlickrPhoto {
   title: string;
 }
 
-@inject(EventAggregator)
+@inject(EventAggregator, NewInstance.of(HttpService))
 export class FlickrService {
-    httpClient = new HttpClient();
-    loading: Array<any> = [];
     photos: Array<IFlickrPhoto>;
     params: any;
 
-    constructor(private ea: EventAggregator) {
-        this.configure();
-    }
-
-    configure(params?: any) {
-        this.httpClient
-            .configure(x => {
-                x.withBaseUrl(`${BASE_URL}`);
-            });
+    constructor(private ea: EventAggregator, private http: HttpService) {
+        this.http.configure({ base_url: BASE_URL });
         this.params = {
-                    api_key: API_KEY,
-                    format: 'json',
-                    nojsoncallback: 'true',
-                    user_id: USER_ID
-                }
+                api_key: API_KEY,
+                format: 'json',
+                nojsoncallback: 'true',
+                user_id: USER_ID
+        }
     }
 
     getPublicPhotos(limit: number = 10, page: number = 1, extras?: string): Promise<Array<IFlickrPhoto>> {
@@ -60,7 +51,7 @@ export class FlickrService {
 
         if(extras) { this.params.extras = extras; }
 
-        return this.getData('/', this.params, photoParse);
+        return this.http.getData('/', this.params, photoParse);
     }
 
     generateLink(photo: IFlickrPhoto, flickrSize: string): string {
@@ -68,25 +59,4 @@ export class FlickrService {
         return `${imgUrlBase}_${flickrSize}.jpg`;
     }
 
-    private getData(endpoint: string, params?: any, parseFunction?: Function) {
-        this.loading.push(endpoint);
-        this.ea.publish('http:loading', true);
-        return new Promise((resolve, reject) => {
-            this.httpClient
-                .createRequest(endpoint)
-                .asGet()
-                .withParams(params)
-                .send()
-                .then(data => {
-                    this.loading.splice(this.loading.indexOf(endpoint), 1);
-                    this.ea.publish('http:loading', this.loading.length);
-                    resolve( parseFunction ? parseFunction(data) : JSON.parse(data.response));
-                })
-                .catch(e => {
-                    this.loading.splice(this.loading.indexOf(endpoint), 1);
-                    this.ea.publish('http:loading', this.loading.length);
-                    reject(e);
-                });
-        });
-    }
 }

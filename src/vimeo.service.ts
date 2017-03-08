@@ -1,6 +1,6 @@
-import { inject } from 'aurelia-framework';
-import { HttpClient } from 'aurelia-http-client';
+import { inject, NewInstance } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
+import { HttpService } from './http.service';
 import * as process from './process.env';
 
 const BASE_URL = process.env.VIMEO_BASE_URL;
@@ -18,23 +18,21 @@ interface IFlickrPhoto {
   title: string;
 }
 
-@inject(EventAggregator)
+@inject(EventAggregator, NewInstance.of(HttpService))
 export class VimeoService {
-    httpClient = new HttpClient();
-    loading: Array<any> = [];
+
     videos: Array<any>;
     params: any;
 
-    constructor(private ea: EventAggregator) {
+    constructor(private ea: EventAggregator, private http: HttpService) {
         this.configure();
     }
 
     configure(params?: any) {
-        this.httpClient
-            .configure(x => {
-                x.withBaseUrl(`${BASE_URL}/users/${USER_ID}`);
-                x.withHeader( 'Authorization', `Bearer ${ACCESS_TOKEN}`);
-            });
+        this.http.configure({
+            base_url: `${BASE_URL}/users/${USER_ID}`,
+            authorization: `Bearer ${ACCESS_TOKEN}`
+        });
     }
 
     getPublicVideos(): Promise<Array<any>> {
@@ -43,28 +41,6 @@ export class VimeoService {
 
         const videosParse = (data) => JSON.parse(data.response).data;
 
-        return this.getData('/videos', this.params, videosParse);
-    }
-
-    private getData(endpoint: string, params?: any, parseFunction?: Function) {
-        this.loading.push(endpoint);
-        this.ea.publish('http:loading', true);
-        return new Promise((resolve, reject) => {
-            this.httpClient
-                .createRequest(endpoint)
-                .asGet()
-                .withParams(params)
-                .send()
-                .then(data => {
-                    this.loading.splice(this.loading.indexOf(endpoint), 1);
-                    this.ea.publish('http:loading', this.loading.length);
-                    resolve( parseFunction ? parseFunction(data) : JSON.parse(data.response));
-                })
-                .catch(e => {
-                    this.loading.splice(this.loading.indexOf(endpoint), 1);
-                    this.ea.publish('http:loading', this.loading.length);
-                    reject(e);
-                });
-        });
+        return this.http.getData('/videos', this.params, videosParse);
     }
 }
