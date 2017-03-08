@@ -2,8 +2,10 @@ import { inject } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-http-client';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import * as moment from 'moment';
+import * as process from './process.env';
 
-const BASE_URL = 'https://rest.bandsintown.com/artists/';
+const BASE_URL = process.env.BANDSINTOWN_BASE_URL;
+const APP_ID = process.env.BANDSINTOWN_APP_ID;
 
 interface IVenue {
     name: string;
@@ -29,12 +31,10 @@ export class BandsintownService {
     httpClient = new HttpClient();
     loading: Array<any> = [];
     events: IEvent[];
-    app_id: string;
 
     constructor(private ea: EventAggregator) { }
 
     configure(params: any) {
-        this.app_id = params.app_id;
         this.httpClient
             .configure(x => {
                 x.withBaseUrl(`${BASE_URL}/${params.artistname}`);
@@ -62,7 +62,7 @@ export class BandsintownService {
                 return event;
             });
 
-        return this.getData('events', {date: datestr, app_id: this.app_id}, eventParse);
+        return this.getData('events', {date: datestr, app_id: APP_ID}, eventParse);
     }
 
     private getData(endpoint: string, params?: any, parseFunction?: Function) {

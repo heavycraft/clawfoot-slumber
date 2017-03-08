@@ -1,3 +1,5 @@
 node_modules
 .idea
 .DS_STORE
+src/ENV_VARIABLE.ts
+src/process.env.ts
