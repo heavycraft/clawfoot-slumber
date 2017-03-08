@@ -7,15 +7,73 @@ const BASE_URL = process.env.VIMEO_BASE_URL;
 const USER_ID = process.env.VIMEO_USER_ID;
 const ACCESS_TOKEN = process.env.VIMEO_ACCESS_TOKEN;
 
-interface IFlickrPhoto {
-  farm: number;
-  id: string;
-  isfamily: boolean;
-  isprimary: boolean;
-  ispublic: boolean;
-  secret: string;
-  server: string;
-  title: string;
+interface IVimeoPicture {
+    width: number;
+    height: number;
+    link: string;
+    link_with_play_button: string;
+}
+
+interface IVimeoWebsite {
+    description?: string;
+    link: string;
+    name?: string;
+}
+
+interface IVimeoUser {
+    account: string;
+    bio: string;
+    created_time: string;
+    link: string;
+    location: string;
+    medatadata: any;
+    name: string;
+    pictures: IVimeoPictures;
+    preferences?: any;
+    resource_key: string;
+    uri: string;
+    websites: Array<IVimeoWebsite>;
+}
+
+interface IVimeoPictures {
+    active: string, 
+    resource_key: string, 
+    type: string, 
+    uri: string, 
+    sizes: Array<IVimeoPicture>
+}
+
+interface IVimeoVideo {
+  created_time: string;
+  modified_time: string;
+  release_time: string;
+  name: string;
+  description: string;
+  duration: number;
+  embed: { html: string };
+  height: number;
+  width: number;
+  link: string;
+  metadata: any;
+  pictures: IVimeoPictures;
+  privacy?: {
+      add?: boolean, 
+      comments?: 'anybody' | 'nobody' | 'contacts', 
+      download?: boolean, 
+      embed?: 'public', 'private', 'whitelist',
+      view?: 'anybody' | 'nobody' | 'contacts' | 'password' | 'users' | 'unlisted' | 'disable'
+    };
+  resource_key: string;
+  stats: { plays: number };
+  status: string;
+  tags: Array<any>;
+  uri: string;
+  user: any;
+  app?: any;
+  content_rating?: Array<any>; // see /contentrating endpoint
+  embed_presets?: any;
+  language?: any;
+  license?: 'by' | 'by-sa' | 'by-nd' | 'by-nc' | 'by-nc-sa' | 'by-nc-nd' | 'cc0';
 }
 
 @inject(EventAggregator, NewInstance.of(HttpService))
@@ -35,7 +93,7 @@ export class VimeoService {
         });
     }
 
-    getPublicVideos(): Promise<Array<any>> {
+    getPublicVideos(): Promise<Array<IVimeoVideo>> {
 
         if (this.videos) { return new Promise( resolve => resolve(this.videos)); }
 
