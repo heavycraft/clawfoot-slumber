@@ -3,3 +3,5 @@ node_modules
 .DS_STORE
 src/ENV_VARIABLE.ts
 src/process.env.ts
+src/environment.ts
+scripts
