@@ -128,7 +128,8 @@
             "main": "aurelia-testing",
             "env": "dev"
           },
-          "moment"
+          "moment",
+          "howler"
         ]
       }
     ]

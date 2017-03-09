@@ -8,11 +8,13 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@types/howler": "^2.0.1",
     "aurelia-animator-css": "^1.0.0",
     "aurelia-bootstrapper": "^1.0.0",
     "aurelia-http-client": "^1.0.4",
     "bluebird": "^3.4.1",
     "bootstrap": "^4.0.0-alpha.6",
+    "howler": "^2.0.2",
     "moment": "^2.17.1",
     "requirejs": "^2.3.2",
     "text": "github:requirejs/text#latest"
