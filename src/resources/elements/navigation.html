@@ -17,7 +17,7 @@
       <div class="collapse navbar-collapse ${collapsed ? '': 'show'}">
         <ul class="nav navbar-nav justify-content-center justify-content-md-start">
           <li class="nav-item" repeat.for="link of items" click.trigger="navigateTo(link)" >
-            <a class="nav-link text-uppercase ${link.isActive ? 'active' : ''}" role="button"><span class="glitch-hover" data-glitch-text.bind="link.title">${link.title}</span></a>
+            <a class="nav-link text-uppercase ${link.isActive ? 'active' : ''} ${link.highlight ? 'text-primary': ''}" role="button"><span class="glitch-hover" data-glitch-text.bind="link.title">${link.title}</span></a>
           </li>
           
         </ul>
