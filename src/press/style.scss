@@ -1,0 +1,41 @@
+@import '../scss/variables';
+.playlist-track-progress.progress {
+    .progress-bar {
+        transition: width ease 500ms;
+    }
+}
+.playlist-track-list.list-group {
+    counter-reset: track-counter;
+    .list-group-item {
+        counter-increment: track-counter;
+        
+        &:before {
+            content: counter(track-counter);
+            width: $font-size-base * $line-height-base;
+            height: $font-size-base * $line-height-base;
+            text-align: center;
+            margin-right: $spacer;
+            
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        &.playing:before {
+            content: '\f028';
+            font: normal normal normal $font-size-base* $line-height-base FontAwesome;
+        }
+        &.playing:hover:before {
+            content: '\f04c';
+            font: normal normal normal $font-size-base* $line-height-base FontAwesome;
+        }
+        &.paused:before {
+            content: '\f026';
+            font: normal normal normal $font-size-base* $line-height-base FontAwesome;
+        }
+
+        &:hover:before, &.paused:hover:before {
+            content: '\f04b';
+            font: normal normal normal $font-size-base* $line-height-base FontAwesome;
+        }
+    }
+}
