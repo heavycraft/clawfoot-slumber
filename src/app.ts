@@ -13,7 +13,7 @@ export class App {
     { title: 'about',     route: 'home',   anchor: 'about',    active: false },
     { title: 'tour',      route: 'home',   anchor: 'tour',     active: false },
     { title: 'contact',   route: 'home',   anchor: 'contact',  active: false },
-    { title: 'press kit', route: 'press',  anchor: false,      active: false}
+    { title: 'press kit', route: 'press',  anchor: false,      active: false, highlight: true}
   ];
 
   social = [
