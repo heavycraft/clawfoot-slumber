@@ -7,20 +7,20 @@ const BASE_URL = process.env.VIMEO_BASE_URL;
 const USER_ID = process.env.VIMEO_USER_ID;
 const ACCESS_TOKEN = process.env.VIMEO_ACCESS_TOKEN;
 
-interface IVimeoPicture {
+export interface IVimeoPicture {
     width: number;
     height: number;
     link: string;
     link_with_play_button: string;
 }
 
-interface IVimeoWebsite {
+export interface IVimeoWebsite {
     description?: string;
     link: string;
     name?: string;
 }
 
-interface IVimeoUser {
+export interface IVimeoUser {
     account: string;
     bio: string;
     created_time: string;
@@ -35,7 +35,7 @@ interface IVimeoUser {
     websites: Array<IVimeoWebsite>;
 }
 
-interface IVimeoPictures {
+export interface IVimeoPictures {
     active: string, 
     resource_key: string, 
     type: string, 
@@ -43,7 +43,7 @@ interface IVimeoPictures {
     sizes: Array<IVimeoPicture>
 }
 
-interface IVimeoVideo {
+export interface IVimeoVideo {
   created_time: string;
   modified_time: string;
   release_time: string;
