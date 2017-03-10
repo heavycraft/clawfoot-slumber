@@ -1,5 +1,6 @@
 import { inject, NewInstance } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
+import { Howl } from 'howler';
 import { HttpService } from './http.service';
 import * as process from './process.env';
 
@@ -134,22 +135,20 @@ export class SoundCloudService {
 
     getUserPlaylists(uid: number | string, representation?: 'compact' | 'id', q?: string): Promise<Array<ISoundCloudPlaylist>> {
         if (this.user_playlists && this.user_playlists.hasOwnProperty(uid) ) { return new Promise(resolve => resolve(this.user_playlists[uid])); }
-        return this.http.getData(`/users/${uid}/playlists`, this.params);
+        const parsePlaylistData = (data) => JSON.parse(data.response)
+            .map((playlist: ISoundCloudPlaylist) => {
+                playlist.tracks.forEach(track => {
+                    track.player = new Howl({
+                        src: [`${track.stream_url}?client_id=${CLIENT_ID}`],
+                        format: [track.original_format],
+                        autoplay: false,
+                        preload: false
+                    });
+                });
+                return playlist;
+            })
+
+        return this.http.getData(`/users/${uid}/playlists`, this.params, parsePlaylistData);
     }
-
-/*    getPublicPhotos(limit: number = 10, page: number = 1, extras?: string): Promise<Array<IFlickrPhoto>> {
-
-        if (this.photos) { return new Promise( resolve => resolve(this.photos)); }
-
-        const photoParse = (data) => JSON.parse(data.response).photos.photo;
-
-        this.params.method = 'flickr.people.getPublicPhotos';
-        this.params.per_page = limit;
-        this.params.page = page;
-
-        if(extras) { this.params.extras = extras; }
-
-        return this.http.getData('/', this.params, photoParse);
-    }*/
 
 }
