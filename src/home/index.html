@@ -1,18 +1,13 @@
 <template>
   <require from="../resources/elements/eventtable"></require>
-<section id="music" class="navbar-offset">
+<section id="music" class="d-flex w-100 h-100 align-items-end" style.bind="'background-image: url('+album.artwork_url.replace('large','original')+'); background-position: center top; background-size:cover; min-height:100vh'">
     <div class="container">
-      <div class="row">
-        <div class="col-12 text-center ">
-          <h1 class="text-uppercase font-weight-light">MUSIC</h1>
-        </div>
-      </div>
+
       <div class="row">
         <div class="col-12 text-center">
-          <img class="img-fluid" style="max-height:40vh;" src="assets/image/album-cover.jpg" />
-          <p class="lead m-4">The album <strong>Open Wide to the Demons Who Crave a Word With the Ghost of Your Heart</strong></p>
+          <p class="lead m-4">The album <strong>${album.title}</strong></p>
           <p>Available now on:</p>
-          <a href="https://itunes.apple.com/us/album/open-wide-to-demons-who-crave-word-ghost-your-heart/id1016900195"><img width="100" src="assets/image/itunes.svg" alt="iTunes" align="middle" class="mx-3" /></a>
+          <a href.bind="album.purchase_url"><img width="100" src="assets/image/itunes.svg" alt="iTunes" align="middle" class="mx-3" /></a>
           <a href="https://play.spotify.com/album/0qc8OVeyZFO9qQ2UKrjMWH"><img width="100" src="assets/image/spotify.svg" alt="Spotify"  align="middle" class="mx-3" /></a>
         </div>
       </div>
