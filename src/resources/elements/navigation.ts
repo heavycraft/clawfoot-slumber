@@ -45,8 +45,9 @@ export class Navigation {
         clearInterval(this.scrollInterval);
 
         let scrollElement = document.scrollingElement || document.documentElement;
+        let scrollAnchorElement = document.getElementById(anchor.replace('#', ''));
         let start = scrollElement.scrollTop;
-        let to = document.getElementById(anchor.replace('#', '')).offsetTop - 80;
+        let to = scrollAnchorElement.offsetTop - 80 > 0 ? scrollAnchorElement.offsetTop - 80 : 0;
         if (start === to) { return; }
 
         let diff = to - scrollElement.scrollTop;
