@@ -4,21 +4,21 @@
     <section  class="navbar-offset">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <h1 class="text-uppercase font-weight-light">Photos</h1>
+                <div class="col-12 col-md-6 pb-4">
+                    <h1 class="text-uppercase text-center font-weight-light">Photos</h1>
                     <div class="card-columns">
                         <div class="card" repeat.for="photo of photos">
                             <img class="card-img-top img-fluid" src.bind="photo.url_m" alt="">
                         </div>
                     </div>
 
-                    <h1 class="text-uppercase font-weight-light mt-5">Video</h1>
+                    <h1 class="text-uppercase text-center font-weight-light mt-5">Video</h1>
                     <div class="embed-responsive embed-responsive-16by9 mb-3" repeat.for="video of videos">
                         <iframe class="embed-responsive-item" src.bind="'https://player.vimeo.com'+video.uri.replace('/videos/','/video/')+'?badge=0&amp;autopause=0&amp;player_id=0'" title.bind="video.name"></iframe>
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <h1 class="text-uppercase font-weight-light">Tunes</h1>
+                    <h1 class="text-uppercase text-center font-weight-light">Tunes</h1>
                     <div class="card" repeat.for="playlist of playlists">
                         <div if.bind="selectedTrack" class="card-block">
                             <div class="d-flex w-100 justify-content-between mb-3">
@@ -50,7 +50,7 @@
                         </ul>
                     </div>
 
-                    <h1 class="text-uppercase font-weight-light mt-5">Bio</h1>
+                    <h1 class="text-uppercase text-center font-weight-light mt-5">Bio</h1>
                     <p innerhtml.bind="band.description"></p>
                 </div>
             </div>
