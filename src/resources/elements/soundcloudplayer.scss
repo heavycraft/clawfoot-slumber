@@ -1,4 +1,4 @@
-@import '../scss/variables';
+@import '../../scss/variables';
 .playlist-track-progress.progress {
     .progress-bar {
         transition: width ease 500ms;
@@ -21,20 +21,20 @@
             -moz-osx-font-smoothing: grayscale;
         }
         &.playing:before {
-            content: '\f028';
+            content: '\f028'; // Volume Up
             font: normal normal normal $font-size-base* $line-height-base FontAwesome;
         }
         &.playing:hover:before {
-            content: '\f04c';
+            content: '\f04c'; // Pause
             font: normal normal normal $font-size-base* $line-height-base FontAwesome;
         }
         &.paused:before {
-            content: '\f026';
+            content: '\f026'; // Volume Off
             font: normal normal normal $font-size-base* $line-height-base FontAwesome;
         }
 
         &:hover:before, &.paused:hover:before {
-            content: '\f04b';
+            content: '\f04b'; // Play
             font: normal normal normal $font-size-base* $line-height-base FontAwesome;
         }
     }
