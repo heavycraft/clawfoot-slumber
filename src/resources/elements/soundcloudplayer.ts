@@ -14,6 +14,7 @@ export class SoundCloudPlayer {
   }
 
   playTrack(track: ISoundCloudTrack, forceStop = true) {
+
     if (!track.isPlaying) {
       this.selectedTrack = track;
       if (forceStop) { this.stopAllTracks(); } //stop any playing tracks
@@ -43,7 +44,8 @@ export class SoundCloudPlayer {
       track.isLoading = track.player.state() !== 'loaded';
       if (!track.isLoading) { 
         clearInterval(loadedInterval); 
-        this.playTrack(track);
+        //ensure it is the same track as the newest selected track
+        if(track === this.selectedTrack) { this.playTrack(track); }
       }
     }, 500)
   }
