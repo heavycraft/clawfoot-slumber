@@ -14,9 +14,13 @@
                         </div>
 
                         <h1 class="text-uppercase text-center font-weight-light mt-5">Video</h1>
-                        <div class="embed-responsive embed-responsive-16by9 mb-3" repeat.for="video of videos">
+                        <div class="embed-responsive embed-responsive-16by9 mb-3" repeat.for="video of videos" if.bind="!errors.video">
                             <iframe class="embed-responsive-item" src.bind="'https://player.vimeo.com'+video.uri.replace('/videos/','/video/')+'?badge=0&amp;autopause=0&amp;player_id=0'"
                                 title.bind="video.name"></iframe>
+                        </div>
+                        <div class="text-center" if.bind="errors.video">
+                            <p class="lead">Uh oh! We had an issue getting the video.</p>
+                            <small>${errors.video}</small>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">

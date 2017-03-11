@@ -99,7 +99,8 @@ export class VimeoService {
         if(fields && fields.length) { this.params.fields = fields.join(','); }
 
         const videosParse = (data) => JSON.parse(data.response).data;
+        const errorsParse = (data) => JSON.parse(data.response).error;
 
-        return this.http.getData('/videos', this.params, videosParse);
+        return this.http.getData('/videos', this.params, videosParse, errorsParse);
     }
 }

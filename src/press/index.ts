@@ -11,10 +11,13 @@ export class Press {
     videos: any;
     playlist: ISoundCloudPlaylist;
     flickrId = process.env.FLICKR_USER_ID;
+    errors: any = {};
 
     constructor(private flickr: FlickrService, private vimeo: VimeoService, private soundcloud: SoundCloudService) {
         flickr.getPublicPhotos(10,1,'url_m').then(photos => { this.photos = photos; });
-        vimeo.getPublicVideos(['uri', 'name']).then(videos => { this.videos = videos; });
+        vimeo.getPublicVideos(['uri', 'name'])
+            .then(videos => { this.videos = videos; })
+            .catch(error => this.errors.video = error);
         soundcloud.getUser('clawfootslumber').then(band => { this.band = band; });
         soundcloud.getUserPlaylists('clawfootslumber').then(playlists => { 
             if(playlists.length && playlists[0].tracks.length) {

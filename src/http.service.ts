@@ -18,7 +18,7 @@ export class HttpService {
         });
     }
 
-    getData(endpoint: string, params?: any, parseFunction?: Function) {
+    getData(endpoint: string, params?: any, parseFunction?: Function, errorsParseFunction?: Function) {
         this.loading.push(endpoint);
         this.ea.publish('http:loading', true);
         return new Promise((resolve, reject) => {
@@ -36,7 +36,7 @@ export class HttpService {
                 .catch(e => {
                     this.loading.splice(this.loading.indexOf(endpoint), 1);
                     this.ea.publish('http:loading', this.loading.length);
-                    reject(e);
+                    reject( errorsParseFunction ? errorsParseFunction(e) : e);
                 });
         });
     }

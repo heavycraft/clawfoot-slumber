@@ -25,9 +25,13 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <div class="video-wrapper">
+            <div class="video-wrapper" if.bind="!errors.video">
               <iframe src.bind="'https://player.vimeo.com'+video.uri.replace('/videos/','/video/')+'?color=ff0179&title=0&byline=0&portrait=0'"
                 width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+            <div class="text-center" if.bind="errors.video">
+              <p class="lead">Uh oh! We had an issue getting the video.</p>
+              <small>${errors.video}</small>
             </div>
           </div>
         </div>
