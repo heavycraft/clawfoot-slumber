@@ -82,3 +82,9 @@ a {
         height: 100%;
     }
 }
+[in-view] {
+    transition: filter 500ms ease;
+    &.out-of-view {
+        filter: blur(5px);   
+    }
+}
