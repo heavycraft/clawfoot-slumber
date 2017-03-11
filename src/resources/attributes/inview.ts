@@ -24,7 +24,7 @@ export class InViewCustomAttribute {
 
   constructor(private element: Element) {
     let documentScrollElement = document.scrollingElement || document.documentElement;
-    this.scrollHandler = debounce(e => { this.checkView(); }, 250);
+    this.scrollHandler = debounce(e => { this.checkView(); }, 100);
   }
 
   checkView() {
