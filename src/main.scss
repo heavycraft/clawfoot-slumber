@@ -1,6 +1,7 @@
 @import './scss/variables';
 @import './scss/glitch';
 @import './scss/shimmer';
+@import './scss/animation';
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Montserrat:200,400');
 
@@ -87,4 +88,22 @@ a {
     &.out-of-view {
         filter: blur(5px);   
     }
+}
+
+.router-page {
+    &.au-enter {
+        opacity: 0;
+    }
+
+    &.au-enter-active {
+        transform-origin: top;
+        
+        -webkit-animation: fadeIn 600ms forwards;
+        animation: fadeIn 600ms forwards;
+    }
+
+}
+
+body {
+    //perspective: 1000px;
 }

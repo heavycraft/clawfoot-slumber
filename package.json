@@ -9,7 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/howler": "^2.0.1",
-    "aurelia-animator-css": "^1.0.0",
+    "aurelia-animator-css": "^1.0.1",
     "aurelia-bootstrapper": "^1.0.0",
     "aurelia-http-client": "^1.0.4",
     "bluebird": "^3.4.1",
