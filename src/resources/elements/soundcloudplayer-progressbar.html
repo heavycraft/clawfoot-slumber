@@ -1,0 +1,6 @@
+<template>
+    <div class="playlist-track-progress progress">
+        <div class="progress-bar ${track.isLoading ? ' progress-bar-striped progress-bar-animated' : ''}" role="progressbar" aria-valuenow="0"
+            aria-valuemin="0" aria-valuemax="100" style.bind="!track.isLoading ? 'width:' + percent*100 +'%' : 'width:100%'">${track.isLoading ? 'Loading Track ...' : ''}</div>
+    </div>
+</template>

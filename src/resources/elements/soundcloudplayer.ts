@@ -26,7 +26,7 @@ export class SoundCloudPlayer {
       track.isPlaying = true;
       clearInterval(this.trackTimeInterval);
       this.trackTimeInterval = setInterval((() => {
-        this.trackTime = ~~(track.player.seek() * 1000);
+        this.trackTime = ~~track.player.seek() * 1000;
       }).bind(this), 1000);
     } else {
       this.pauseTrack(track);

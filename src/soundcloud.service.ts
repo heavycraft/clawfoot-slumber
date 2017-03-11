@@ -78,7 +78,7 @@ export interface ISoundCloudTrack {
     user_favorite: boolean;
     attachments_uri: string;
     //these are custom fields to attach a player
-    player?: any; 
+    player?: Howl; 
     isPlaying?: boolean;
     isLoading?: boolean;
 }

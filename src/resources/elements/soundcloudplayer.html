@@ -1,5 +1,6 @@
 <template>
   <require from="./soundcloudplayer.css"></require>
+  <require from="./soundcloudplayer-progressbar"></require>
   <require from="../value-converters/tracktimeformat"></require>
   <div class="card">
     <div if.bind="selectedTrack" class="card-block">
@@ -20,10 +21,8 @@
           </div>
         </div>
       </div>
-      <div class="playlist-track-progress progress">
-        <div class="progress-bar ${selectedTrack.isLoading ? ' progress-bar-striped progress-bar-animated' : ''}" role="progressbar"
-          aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style.bind="!selectedTrack.isLoading ? 'width:' + (trackTime/selectedTrack.duration)*100 +'%' : 'width:100%'">${selectedTrack.isLoading ? 'Loading Track ...' : ''}</div>
-    </div>
+      <sound-cloud-player-progressbar track.bind="selectedTrack" time.bind="trackTime"></sound-cloud-player-progressbar>
+
   </div>
   <ul class="playlist-track-list list-group list-group-flush">
     <li role="button" class="list-group-item list-group-item-action ${track === selectedTrack && !track.isPlaying ? 'paused' : ''} ${track.isPlaying ? 'playing' : ''}"
