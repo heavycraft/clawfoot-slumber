@@ -119,8 +119,8 @@ export interface ISoundCloudPlaylist {
 
 @inject(EventAggregator, NewInstance.of(HttpService))
 export class SoundCloudService {
-    user: Array<ISoundCloudUser>;
-    user_playlists: Array<ISoundCloudPlaylist>;
+    user: Array<ISoundCloudUser> = [];
+    user_playlists: Array<ISoundCloudPlaylist> = [];
     params: any;
 
     constructor(private ea: EventAggregator, private http: HttpService) {
@@ -130,23 +130,24 @@ export class SoundCloudService {
 
     getUser(uid: number | string, q?: string): Promise<ISoundCloudUser> {
         if (this.user && this.user.hasOwnProperty(uid) ) { return new Promise(resolve => resolve(this.user[uid])); }
-        return this.http.getData(`/users/${uid}`, this.params);
+        const userParse = (data) => this.user[uid] = JSON.parse(data.response);
+        return this.http.getData(`/users/${uid}`, this.params, userParse);
     }
 
     getUserPlaylists(uid: number | string, representation?: 'compact' | 'id', q?: string): Promise<Array<ISoundCloudPlaylist>> {
         if (this.user_playlists && this.user_playlists.hasOwnProperty(uid) ) { return new Promise(resolve => resolve(this.user_playlists[uid])); }
-        const parsePlaylistData = (data) => JSON.parse(data.response)
-            .map((playlist: ISoundCloudPlaylist) => {
-                playlist.tracks.forEach(track => {
-                    track.player = new Howl({
-                        src: [`${track.stream_url}?client_id=${CLIENT_ID}`],
-                        format: [track.original_format],
-                        autoplay: false,
-                        preload: false
+        const parsePlaylistData = (data) => this.user_playlists[uid] = JSON.parse(data.response)
+                .map((playlist: ISoundCloudPlaylist) => {
+                    playlist.tracks.forEach(track => {
+                        track.player = new Howl({
+                            src: [`${track.stream_url}?client_id=${CLIENT_ID}`],
+                            format: [track.original_format],
+                            autoplay: false,
+                            preload: false
+                        });
                     });
+                    return playlist;
                 });
-                return playlist;
-            })
 
         return this.http.getData(`/users/${uid}/playlists`, this.params, parsePlaylistData);
     }

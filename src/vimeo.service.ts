@@ -79,7 +79,7 @@ export interface IVimeoVideo {
 @inject(EventAggregator, NewInstance.of(HttpService))
 export class VimeoService {
 
-    videos: Array<any>;
+    videos: Array<IVimeoVideo> = [];
     params: any = {};
 
     constructor(private ea: EventAggregator, private http: HttpService) {
@@ -94,11 +94,11 @@ export class VimeoService {
     }
 
     getPublicVideos(fields?: string[]): Promise<Array<IVimeoVideo>> {
-
-        if (this.videos) { return new Promise( resolve => resolve(this.videos)); }
+        let videos_id = 'videos-'+fields.join('-');
+        if (this.videos && this.videos.hasOwnProperty(videos_id)) { return new Promise( resolve => resolve(this.videos[videos_id])); }
         if(fields && fields.length) { this.params.fields = fields.join(','); }
 
-        const videosParse = (data) => JSON.parse(data.response).data;
+        const videosParse = (data) => this.videos[videos_id] = JSON.parse(data.response).data;
         const errorsParse = (data) => JSON.parse(data.response).error;
 
         return this.http.getData('/videos', this.params, videosParse, errorsParse);

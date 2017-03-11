@@ -20,7 +20,7 @@ interface IFlickrPhoto {
 
 @inject(EventAggregator, NewInstance.of(HttpService))
 export class FlickrService {
-    photos: Array<IFlickrPhoto>;
+    photos: Array<IFlickrPhoto> = [];
     params: any;
 
     constructor(private ea: EventAggregator, private http: HttpService) {
@@ -40,10 +40,11 @@ export class FlickrService {
         description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, 
         machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o
         */
+        let photos_id = [limit,page,extras].join('-');
 
-        if (this.photos) { return new Promise( resolve => resolve(this.photos)); }
+        if (this.photos && this.photos.hasOwnProperty(photos_id)) { return new Promise( resolve => resolve(this.photos[photos_id])); }
 
-        const photoParse = (data) => JSON.parse(data.response).photos.photo;
+        const photoParse = (data) => this.photos[photos_id] = JSON.parse(data.response).photos.photo;
 
         this.params.method = 'flickr.people.getPublicPhotos';
         this.params.per_page = limit;

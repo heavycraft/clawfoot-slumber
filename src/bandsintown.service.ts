@@ -28,7 +28,7 @@ interface IEvent {
 
 @inject(EventAggregator, NewInstance.of(HttpService))
 export class BandsintownService {
-    events: IEvent[];
+    events: IEvent[] = [];
 
     constructor(private ea: EventAggregator, private http: HttpService) { }
 
@@ -49,7 +49,7 @@ export class BandsintownService {
             datestr = date;
         }
 
-        const eventParse = (data) => JSON.parse(data.response)
+        const eventParse = (data) => this.events[date] = JSON.parse(data.response)
             .reverse()
             .filter((arr, idx) => limit ? idx < limit : true)
             .map( (event: IEvent) => {
