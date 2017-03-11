@@ -80,7 +80,7 @@ export interface IVimeoVideo {
 export class VimeoService {
 
     videos: Array<any>;
-    params: any;
+    params: any = {};
 
     constructor(private ea: EventAggregator, private http: HttpService) {
         this.configure();
@@ -93,9 +93,10 @@ export class VimeoService {
         });
     }
 
-    getPublicVideos(): Promise<Array<IVimeoVideo>> {
+    getPublicVideos(fields?: string[]): Promise<Array<IVimeoVideo>> {
 
         if (this.videos) { return new Promise( resolve => resolve(this.videos)); }
+        if(fields && fields.length) { this.params.fields = fields.join(','); }
 
         const videosParse = (data) => JSON.parse(data.response).data;
 

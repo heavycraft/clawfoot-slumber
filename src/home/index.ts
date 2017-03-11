@@ -17,6 +17,6 @@ export class Home {
         bandsintown.getEvents('upcoming').then(events => this.events.future = events);
         soundcloud.getUser('clawfootslumber').then(band => this.band = band);
         soundcloud.getUserPlaylists('clawfootslumber').then(playlists => this.album = playlists[0]);
-        vimeo.getPublicVideos().then(videos => this.video = videos[0]);
+        vimeo.getPublicVideos(['uri']).then(videos => this.video = videos[0]);
     }
 }

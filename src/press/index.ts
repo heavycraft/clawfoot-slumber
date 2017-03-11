@@ -14,7 +14,7 @@ export class Press {
 
     constructor(private flickr: FlickrService, private vimeo: VimeoService, private soundcloud: SoundCloudService) {
         flickr.getPublicPhotos(10,1,'url_m').then(photos => { this.photos = photos; });
-        vimeo.getPublicVideos().then(videos => { this.videos = videos; });
+        vimeo.getPublicVideos(['uri', 'name']).then(videos => { this.videos = videos; });
         soundcloud.getUser('clawfootslumber').then(band => { this.band = band; });
         soundcloud.getUserPlaylists('clawfootslumber').then(playlists => { 
             if(playlists.length && playlists[0].tracks.length) {
