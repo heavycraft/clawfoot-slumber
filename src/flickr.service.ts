@@ -7,7 +7,7 @@ const BASE_URL = process.env.FLICKR_BASE_URL;
 const API_KEY = process.env.FLICKR_API_KEY;
 const USER_ID = process.env.FLICKR_USER_ID;
 
-interface IFlickrPhoto {
+export interface IFlickrPhoto {
   farm: number;
   id: string;
   isfamily: boolean;
