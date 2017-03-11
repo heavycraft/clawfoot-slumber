@@ -1,6 +1,7 @@
 <template>
   <require from="../resources/elements/eventtable"></require>
-<section id="music" class="d-flex w-100 h-100 align-items-end" style.bind="'background-image: url('+album.artwork_url.replace('large','original')+'); background-position: center top; background-size:cover; min-height:100vh'">
+  <require from="../resources/attributes/inview"></require>
+<section id="music" in-view class="d-flex w-100 h-100 align-items-end" style.bind="'background-image: url('+album.artwork_url.replace('large','original')+'); background-position: center top; background-size:cover; min-height:100vh'">
     <div class="container">
 
       <div class="row">
@@ -13,7 +14,7 @@
       </div>
     </div>
   </section>
-  <section id="video" style="background-color:rgba(255,200,255,0.1)">
+  <section id="video" style="background-color:rgba(255,200,255,0.1)" in-view>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center ">
@@ -29,7 +30,7 @@
       </div>
     </div>
   </section>
-  <section id="about">
+  <section id="about" in-view>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center ">
@@ -43,7 +44,7 @@
       </div>
     </div>
   </section>
-  <section id="tour" style="background-color:rgba(255,200,255,0.1)">
+  <section id="tour" style="background-color:rgba(255,200,255,0.1)" in-view>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center ">
@@ -60,7 +61,7 @@
       </div>
     </div>
   </section>
-  <section id="contact">
+  <section id="contact" in-view>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center ">
