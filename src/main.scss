@@ -98,12 +98,8 @@ a {
     &.au-enter-active {
         transform-origin: top;
         
-        -webkit-animation: fadeIn 600ms forwards;
-        animation: fadeIn 600ms forwards;
+        -webkit-animation: fadeIn 750ms ease forwards;
+        animation: fadeIn 750ms ease forwards;
     }
 
-}
-
-body {
-    //perspective: 1000px;
 }
