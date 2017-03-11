@@ -17,7 +17,10 @@ export class SoundCloudPlayer {
     if (!track.isPlaying) {
       this.selectedTrack = track;
       if (forceStop) { this.stopAllTracks(); } //stop any playing tracks
-      if (track.player.state() === 'unloaded') { this.loadTrack(track) };
+      if (track.player.state() === 'unloaded') { 
+        this.loadTrack(track);
+        return;
+      }
       track.player.play();
       track.isPlaying = true;
       clearInterval(this.trackTimeInterval);
@@ -38,7 +41,10 @@ export class SoundCloudPlayer {
     track.player.load();
     let loadedInterval = setInterval(() => {
       track.isLoading = track.player.state() !== 'loaded';
-      if (!track.isLoading) { clearInterval(loadedInterval); }
+      if (!track.isLoading) { 
+        clearInterval(loadedInterval); 
+        this.playTrack(track);
+      }
     }, 500)
   }
 
