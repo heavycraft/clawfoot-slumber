@@ -27,7 +27,7 @@
   </div>
   <ul class="playlist-track-list list-group list-group-flush">
     <li role="button" class="list-group-item list-group-item-action ${track === selectedTrack && !track.isPlaying ? 'paused' : ''} ${track.isPlaying ? 'playing' : ''}"
-      repeat.for="track of playlist.tracks" click.delegate="track.isPlaying ? pauseTrack(track) : playTrack(track)">
+      repeat.for="track of playlist.tracks" click.delegate="track.isPlaying ? pauseTrack(track) : playTrack(track, track !== selectedTrack)">
       ${track.title}
       </li>
   </ul>
