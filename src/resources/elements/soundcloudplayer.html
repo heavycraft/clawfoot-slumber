@@ -3,15 +3,15 @@
   <require from="../value-converters/tracktimeformat"></require>
   <div class="card">
     <div if.bind="selectedTrack" class="card-block">
-      <div class="d-flex w-100 justify-content-between mb-3">
-        <button if.bind="!selectedTrack.isPlaying" role="button" type="button" class="btn btn-primary" click.delegate="playTrack(selectedTrack, false)"><i class="fa fa-play" aria-hidden="true"></i></button>
-        <button if.bind="selectedTrack.isPlaying" role="button" type="button" class="btn btn-primary" click.delegate="pauseTrack(selectedTrack)"><i class="fa fa-pause" aria-hidden="true"></i></button>
+      <div class="d-flex w-100 justify-content-between align-items-center mb-3">
+        <button if.bind="!selectedTrack.isPlaying" role="button" type="button" class="btn btn-lg btn-primary" click.delegate="playTrack(selectedTrack, false)"><i class="fa fa-play" aria-hidden="true"></i></button>
+        <button if.bind="selectedTrack.isPlaying" role="button" type="button" class="btn btn-lg btn-primary" click.delegate="pauseTrack(selectedTrack)"><i class="fa fa-pause" aria-hidden="true"></i></button>
         <div class="text-center">
           ${selectedTrack.title}<br>
           <small class="text-muted">by ${selectedTrack.user.username}</small>
         </div>
         <div>
-          <div class="text-center">
+          <div class="prev-next-buttons text-center">
             <button role="button" class="btn btn-link"><i class="fa fa-step-backward" aria-hidden="true" click.delegate="previousTrack()"></i></button>
             <button role="button" class="btn btn-link"><i class="fa fa-step-forward" aria-hidden="true" click.delegate="nextTrack()"></i></button>
           </div>
