@@ -1,81 +1,86 @@
 <template>
   <require from="../resources/elements/eventtable"></require>
+  <require from="../resources/elements/footer"></require>
   <require from="../resources/attributes/inview"></require>
-<section id="music" in-view class="d-flex w-100 h-100 align-items-end" style.bind="'background-image: url('+album.artwork_url.replace('large','original')+'); background-position: center top; background-size:cover; min-height:100vh'">
-    <div class="container">
+  <div class="router-page au-animate">
+    <section id="music" in-view class="d-flex w-100 h-100 align-items-end" style.bind="'background-image: url('+album.artwork_url.replace('large','original')+'); background-position: center top; background-size:cover; min-height:100vh'">
+      <div class="container">
 
-      <div class="row">
-        <div class="col-12 text-center">
-          <p class="lead m-4">The album <strong>${album.title}</strong></p>
-          <p>Available now on:</p>
-          <a href.bind="album.purchase_url"><img width="100" src="assets/image/itunes.svg" alt="iTunes" align="middle" class="mx-3" /></a>
-          <a href="https://play.spotify.com/album/0qc8OVeyZFO9qQ2UKrjMWH"><img width="100" src="assets/image/spotify.svg" alt="Spotify"  align="middle" class="mx-3" /></a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="video" style="background-color:rgba(255,200,255,0.1)" in-view>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center ">
-          <h1 class="text-uppercase font-weight-light">VIDEO</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="video-wrapper">
-            <iframe src.bind="'https://player.vimeo.com'+video.uri.replace('/videos/','/video/')+'?color=ff0179&title=0&byline=0&portrait=0'" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <div class="row">
+          <div class="col-12 text-center">
+            <p class="lead m-4">The album <strong>${album.title}</strong></p>
+            <p>Available now on:</p>
+            <a href.bind="album.purchase_url"><img width="100" src="assets/image/itunes.svg" alt="iTunes" align="middle" class="mx-3" /></a>
+            <a href="https://play.spotify.com/album/0qc8OVeyZFO9qQ2UKrjMWH"><img width="100" src="assets/image/spotify.svg" alt="Spotify" align="middle" class="mx-3" /></a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section id="about" in-view>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center ">
-          <h1 class="text-uppercase font-weight-light">ABOUT</h1>
+    </section>
+    <section id="video" style="background-color:rgba(255,200,255,0.1)" in-view>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center ">
+            <h1 class="text-uppercase font-weight-light">VIDEO</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="video-wrapper">
+              <iframe src.bind="'https://player.vimeo.com'+video.uri.replace('/videos/','/video/')+'?color=ff0179&title=0&byline=0&portrait=0'"
+                width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-<p class="font-weight-light">${band.description}</p>
+    </section>
+    <section id="about" in-view>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center ">
+            <h1 class="text-uppercase font-weight-light">ABOUT</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="font-weight-light">${band.description}</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-  <section id="tour" style="background-color:rgba(255,200,255,0.1)" in-view>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center ">
-          <h1 class="text-uppercase font-weight-light">TOUR</h1>
+    </section>
+    <section id="tour" style="background-color:rgba(255,200,255,0.1)" in-view>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center ">
+            <h1 class="text-uppercase font-weight-light">TOUR</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-lg-6 text-center">
+            <event-table title="the future" events.bind="events.future"></event-table>
+          </div>
+          <div class="col-12 col-lg-6 text-center">
+            <event-table title="the past" events.bind="events.past"></event-table>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12 col-lg-6 text-center">
-          <event-table title="the future" events.bind="events.future"></event-table>
+    </section>
+    <section id="contact" in-view>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center ">
+            <h1 class="text-uppercase font-weight-light">contact</h1>
+          </div>
         </div>
-        <div class="col-12 col-lg-6 text-center">
-          <event-table title="the past" events.bind="events.past"></event-table>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="contact" in-view>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center ">
-          <h1 class="text-uppercase font-weight-light">contact</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 text-center">
-          <strong>e.</strong> <a class="glitch-hover" href="mailto:alexcallenberger@gmail.com" data-glitch-text="alexcallenberger@gmail.com">alexcallenberger@gmail.com</a>
+        <div class="row">
+          <div class="col-12 text-center">
+            <strong>e.</strong> <a class="glitch-hover" href="mailto:alexcallenberger@gmail.com" data-glitch-text="alexcallenberger@gmail.com">alexcallenberger@gmail.com</a>
             <ul class="list-inline mt-5">
-              <li class="list-inline-item m-3" repeat.for="platform of social" ><a href.bind="platform.link"><i class="fa ${platform.icon} fa-5x"></i></a></li>
+              <li class="list-inline-item m-3" repeat.for="platform of social"><a href.bind="platform.link"><i class="fa ${platform.icon} fa-5x"></i></a></li>
             </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <heavy-craft-footer></heavy-craft-footer>
+  </div>
 </template>
