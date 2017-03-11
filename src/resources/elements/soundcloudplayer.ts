@@ -72,7 +72,7 @@ export class SoundCloudPlayer {
     clearInterval(this.trackTimeInterval);
   }
 
-  deactivate() {
+  detached() {
     this.stopAllTracks();
     clearInterval(this.trackTimeInterval);
   }
