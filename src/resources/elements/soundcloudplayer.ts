@@ -15,7 +15,7 @@ export class SoundCloudPlayer {
 
   playTrack(track: ISoundCloudTrack, forceStop = true) {
 
-    if (!track.isPlaying) {
+    if (track !== this.selectedTrack || !track.isPlaying) {
       this.selectedTrack = track;
       if (forceStop) { this.stopAllTracks(); } //stop any playing tracks
       if (track.player.state() === 'unloaded') { 
