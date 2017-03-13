@@ -1,17 +1,14 @@
 <template>
     <require from="../resources/elements/soundcloudplayer"></require>
     <require from="../resources/elements/footer"></require>
+    <require from="../resources/elements/flickrgallery"></require>
     <div class="router-page au-animate">
         <section>
             <div class="container navbar-offset">
                 <div class="row">
                     <div class="col-12 col-md-6 pb-4">
                         <h1 class="text-uppercase text-center font-weight-light">Photos</h1>
-                        <div class="card-columns">
-                            <div class="card" repeat.for="photo of photos">
-                                <a href.bind="'https://www.flickr.com/photos/'+flickrId+'/'+photo.id"><img class="card-img-top img-fluid w-100" src.bind="photo.url_m" alt=""></a>
-                            </div>
-                        </div>
+                        <flickr-gallery photos.bind="photos"></flickr-gallery>
 
                         <h1 class="text-uppercase text-center font-weight-light mt-5">Video</h1>
                         <div class="embed-responsive embed-responsive-16by9 mb-3" repeat.for="video of videos" if.bind="!errors.video">

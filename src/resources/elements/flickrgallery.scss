@@ -1,0 +1,29 @@
+@import '../../scss/variables';
+
+@keyframes zoomIn {
+    0%   { }
+    100% { 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@keyframes angleIn {
+    0%   { transform: rotateX(0deg); }
+    25% { transform: rotateX(-15deg); }
+    100% { transform: rotateX(0deg); }
+}
+
+.flickr-gallery-image-full{
+    position: fixed;
+    animation: zoomIn 750ms ease forwards;
+    max-height: 100vh;
+    max-width: 100%;
+    z-index: $zindex-modal;
+    perspective: 1000px;
+    img {
+        animation: angleIn 750ms ease forwards;
+    }
+}
