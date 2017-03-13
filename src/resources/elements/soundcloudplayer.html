@@ -13,8 +13,8 @@
         </div>
         <div>
           <div class="prev-next-buttons text-center">
-            <button role="button" class="btn btn-link"><i class="fa fa-step-backward" aria-hidden="true" click.delegate="previousTrack()"></i></button>
-            <button role="button" class="btn btn-link"><i class="fa fa-step-forward" aria-hidden="true" click.delegate="nextTrack()"></i></button>
+            <button role="button" class="btn btn-link" click.delegate="previousTrack()"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+            <button role="button" class="btn btn-link" click.delegate="nextTrack()"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
           </div>
           <div class="text-center">
             <small class="text-muted">${trackTime | trackTimeFormat } / ${selectedTrack.duration | trackTimeFormat}</small>
