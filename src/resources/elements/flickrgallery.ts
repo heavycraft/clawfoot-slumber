@@ -7,6 +7,7 @@ export class FlickrGallery {
 
     constructor(private flickr: FlickrService) { }
 
+    // TODO: address issue with android back button
     openPhoto(photo: IFlickrPhoto, event: MouseEvent) {
         let image = <HTMLElement>event.target;
         let rect = image.getBoundingClientRect();
@@ -17,12 +18,15 @@ export class FlickrGallery {
         const close = () => {
             backdrop.classList.remove('show');
             fullContainer.classList.add('fade');
+            image.classList.remove('selected');
             setTimeout(() => {
                 document.body.removeChild(backdrop);
                 document.body.classList.remove('modal-open');
                 document.body.removeChild(fullContainer);
             }, 150);
         }
+
+        image.classList.add('selected');
 
         backdrop.classList.add('modal-backdrop', 'fade');
         setTimeout(() => { backdrop.classList.add('show'); }, 150)

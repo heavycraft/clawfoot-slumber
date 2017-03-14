@@ -27,3 +27,7 @@
         animation: angleIn 750ms ease forwards;
     }
 }
+
+.flickr-gallery-image.selected {
+    opacity: 0;
+}
