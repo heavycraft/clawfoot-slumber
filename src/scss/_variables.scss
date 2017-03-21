@@ -98,26 +98,36 @@ $red:    #d9534f !default;
 $orange: #f0ad4e !default;
 $yellow: #ffd500 !default;
 $green:  #5cb85c !default;
-$blue:   #0275d8 !default;
+$blue:   #6D93B8 !default;
 $teal:   #5bc0de !default;
 $pink:   #ff4761 !default;
 $purple: #613d7c !default;
 
-// Create grayscale
-$gray-dark:                 #292b2c !default;
-$gray:                      #4a4a4c !default;
-$gray-light:                #c6c6c7 !default;
-$gray-lighter:              #dfe1e2 !default;
-$gray-lightest:             #f8fafb !default;
+
 
 // Reassign color vars to semantic color scheme
-$brand-primary:             $pink !default;
+$brand-primary:             $blue !default;
 $brand-success:             $green !default;
 $brand-info:                $teal !default;
 $brand-warning:             $orange !default;
 $brand-danger:              $red !default;
-$brand-inverse:             $gray-dark !default;
 
+
+// Create grayscale
+/*$gray-dark:                 #292b2c !default;
+$gray:                      #4a4a4c !default;
+$gray-light:                #c6c6c7 !default;
+$gray-lighter:              #dfe1e2 !default;
+$gray-lightest:             #f8fafb !default;*/
+
+// Create grayscale
+$gray-dark:                 desaturate(darken($brand-primary,50%), 90%) !default;
+$gray:                      desaturate(lighten($gray-dark, 10%), 10%) !default;
+$gray-light:                lighten($gray, 25%) !default;
+$gray-lighter:              lighten($gray-light, 25%) !default;
+$gray-lightest:             lighten($gray-lighter, 25%) !default;
+
+$brand-inverse:             $gray-dark !default;
 
 // Options
 //
