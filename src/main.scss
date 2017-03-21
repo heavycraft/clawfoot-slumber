@@ -3,6 +3,7 @@
 @import './scss/shimmer';
 @import './scss/animation';
 @import '../node_modules/bootstrap/scss/bootstrap';
+@import '../node_modules/bootstrap/scss/mixins/breakpoints';
 //@import url('https://fonts.googleapis.com/css?family=Montserrat:200,400');
 
 // Fonts
@@ -35,6 +36,15 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 
 h1, .h1 {
     margin-bottom: 2.5rem;
+    @include media-breakpoint-down(sm){
+        font-size: 2.25rem;
+    }
+}
+
+h2, .h2 {
+    @include media-breakpoint-down(sm){
+        font-size: 1.5rem;
+    }
 }
 
 // Tables
