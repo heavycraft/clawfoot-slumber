@@ -1,11 +1,12 @@
 <template>
   <require from="../value-converters/dateformat"></require>
   <h2 class="text-uppercase">${title}</h2>
-  <table class="table table-hover">
+  <table class="table table-hover" if.bind="events.length">
     <tr repeat.for="event of events" role="button" click.delegate="openUrl(event.url)">
       <th scope="row">${event.datetime | dateFormat}</th>
       <td class="text-nowrap hidden-sm-down">${event.venue.city}, ${event.venue.region}</td>
       <td class="text-left">${event.venue.name} <p class="small text-muted" if.bind="event.lineup.length > 0">with ${event.lineup}</p></td>
     </tr>
   </table>
+  <p if.bind="!events.length">Check back soon for more dates.</p>
 </template>
