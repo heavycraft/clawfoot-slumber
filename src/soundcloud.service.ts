@@ -130,7 +130,11 @@ export class SoundCloudService {
 
     getUser(uid: number | string, q?: string): Promise<ISoundCloudUser> {
         if (this.user && this.user.hasOwnProperty(uid) ) { return new Promise(resolve => resolve(this.user[uid])); }
-        const userParse = (data) => this.user[uid] = JSON.parse(data.response);
+        const userParse = (data) => { 
+            this.user[uid] = JSON.parse(data.response); 
+            this.user[uid].description = this.user[uid].description.replace(/\r/g, '').replace(/\n/g, '<br/>');
+            return this.user[uid];
+        };
         return this.http.getData(`/users/${uid}`, this.params, userParse);
     }
 
