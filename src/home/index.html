@@ -4,11 +4,11 @@
   <require from="../resources/attributes/inview"></require>
   <div class="router-page au-animate">
     <section id="music" in-view class="d-flex w-100 h-100 align-items-end" >
-      <div class="container">
+      <div class="container navbar-offset">
 
         <div class="row">
           <div class="col-12 text-center">
-            <img alt="Album Art" src="album.artwork_url.replace('large','original')">
+            <img alt="Album Art" class="img-fluid" src.bind="album.artwork_url.replace('large','original')">
             <p class="lead m-4">The album <strong>${album.title}</strong></p>
             <p>Available now on:</p>
             <a href.bind="album.purchase_url"><img width="100" src="assets/image/itunes.svg" alt="iTunes" align="middle" class="mx-3" /></a>
