@@ -130,7 +130,12 @@
             "env": "dev"
           },
           "moment",
-          "howler"
+          "howler",
+          {
+            "name": "aurelia-google-analytics",
+            "path": "../node_modules/aurelia-google-analytics/dist/amd",
+            "main": "index"
+          }
         ]
       }
     ]

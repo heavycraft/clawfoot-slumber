@@ -5,16 +5,20 @@
   <div class="card">
     <div if.bind="selectedTrack" class="card-block">
       <div class="d-flex w-100 justify-content-between align-items-center mb-3">
-        <button if.bind="!selectedTrack.isPlaying" role="button" type="button" class="btn btn-primary" click.delegate="playTrack(selectedTrack, false)"><i class="fa fa-play" aria-hidden="true"></i></button>
-        <button if.bind="selectedTrack.isPlaying" role="button" type="button" class="btn btn-primary" click.delegate="pauseTrack(selectedTrack)"><i class="fa fa-pause" aria-hidden="true"></i></button>
+        <button if.bind="!selectedTrack.isPlaying" role="button" type="button" class="btn btn-primary" click.delegate="playTrack(selectedTrack, false)"
+              data-analytics-category="Player" data-analytics-action="Play" data-analytics-label.bind="selectedTrack.title"><i class="fa fa-play" aria-hidden="true"></i></button>
+        <button if.bind="selectedTrack.isPlaying" role="button" type="button" class="btn btn-primary" click.delegate="pauseTrack(selectedTrack)"
+              data-analytics-category="Player" data-analytics-action="Pause" data-analytics-label.bind="selectedTrack.title"><i class="fa fa-pause" aria-hidden="true"></i></button>
         <div class="text-center">
           ${selectedTrack.title}<br>
           <small class="text-muted">by ${selectedTrack.user.username}</small>
         </div>
         <div>
           <div class="prev-next-buttons text-center">
-            <button role="button" class="btn btn-link" click.delegate="previousTrack()"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
-            <button role="button" class="btn btn-link" click.delegate="nextTrack()"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+            <button role="button" class="btn btn-link" click.delegate="previousTrack()"
+              data-analytics-category="Player" data-analytics-action="Previous" data-analytics-label.bind="selectedTrack.title"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+            <button role="button" class="btn btn-link" click.delegate="nextTrack()"
+              data-analytics-category="Player" data-analytics-action="Next" data-analytics-label.bind="selectedTrack.title"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
           </div>
           <div class="text-center">
             <small class="text-muted">${trackTime | trackTimeFormat } / ${selectedTrack.duration | trackTimeFormat}</small>
@@ -26,7 +30,8 @@
   </div>
   <ul class="playlist-track-list list-group list-group-flush">
     <li role="button" class="list-group-item list-group-item-action ${track === selectedTrack && !track.isPlaying ? 'paused' : ''} ${track.isPlaying ? 'playing' : ''}"
-      repeat.for="track of playlist.tracks" click.delegate="track.isPlaying ? pauseTrack(track) : playTrack(track, track !== selectedTrack)">
+      repeat.for="track of playlist.tracks" click.delegate="track.isPlaying ? pauseTrack(track) : playTrack(track, track !== selectedTrack)"
+              data-analytics-category="Player" data-analytics-action="Toggle" data-analytics-label.bind="selectedTrack.title">
       ${track.title}
       </li>
   </ul>

@@ -11,8 +11,10 @@
             <img alt="Album Art" class="img-fluid" src.bind="album.artwork_url.replace('large','original')">
             <p class="lead m-4">The album <strong>${album.title}</strong></p>
             <p>Available now on:</p>
-            <a href.bind="album.purchase_url"><img width="100" src="assets/image/itunes.svg" alt="iTunes" align="middle" class="mx-3" /></a>
-            <a href="https://open.spotify.com/artist/5Hm3XSRX8PRpKaxVMh0Qys"><img width="100" src="assets/image/spotify.svg" alt="Spotify" align="middle" class="mx-3" /></a>
+            <a href.bind="album.purchase_url"><img width="100" src="assets/image/itunes.svg" alt="iTunes" align="middle" class="mx-3"
+              data-analytics-category="Music" data-analytics-action="Purchase" data-analytics-label="iTunes Purchase" /></a>
+            <a href="https://open.spotify.com/artist/5Hm3XSRX8PRpKaxVMh0Qys"
+              data-analytics-category="Music" data-analytics-action="Purchase" data-analytics-label="Spotify Purchase"><img width="100" src="assets/image/spotify.svg" alt="Spotify" align="middle" class="mx-3" /></a>
           </div>
         </div>
       </div>
@@ -26,7 +28,8 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <div class="video-wrapper" if.bind="!errors.video">
+            <div class="video-wrapper" if.bind="!errors.video"
+              data-analytics-category="Music" data-analytics-action="Watch" data-analytics-label="Vimeo Player">
               <iframe src.bind="'https://player.vimeo.com'+video.uri.replace('/videos/','/video/')+'?color=ff0179&title=0&byline=0&portrait=0'"
                 width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
@@ -78,9 +81,11 @@
         </div>
         <div class="row">
           <div class="col-12 text-center">
-            <strong>e.</strong> <a class="glitch-hover" href="mailto:alexcallenberger@gmail.com" data-glitch-text="alexcallenberger@gmail.com">alexcallenberger@gmail.com</a>
+            <strong>e.</strong> <a class="glitch-hover"
+              data-analytics-category="Contact" data-analytics-action="Email" data-analytics-label="Email Clawfoot Slumber" href="mailto:alexcallenberger@gmail.com" data-glitch-text="alexcallenberger@gmail.com">alexcallenberger@gmail.com</a>
             <ul class="list-inline mt-5">
-              <li class="list-inline-item m-3" repeat.for="platform of social"><a href.bind="platform.link"><i class="fa ${platform.icon} fa-5x"></i></a></li>
+              <li class="list-inline-item m-3" repeat.for="platform of social"><a href.bind="platform.link"
+              data-analytics-category="Social" data-analytics-action="Click" data-analytics-label.bind="platform.title"><i class="fa ${platform.icon} fa-5x"></i></a></li>
             </ul>
           </div>
         </div>

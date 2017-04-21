@@ -1,15 +1,18 @@
 <template>
   <require from="./navigation.css"></require>
     <nav class="navbar navbar-inverse fixed-top text-white navbar-toggleable-md justify-content-between au-animate ">
-      <button class="navbar-toggler navbar-toggler-right" type="button" click.trigger="toggleCollapse()">
+      <button class="navbar-toggler navbar-toggler-right" type="button" click.trigger="toggleCollapse()"
+              data-analytics-category="Navigation" data-analytics-action="Click" data-analytics-label="Burger Icon">
         <svg id="burger" viewBox="0 0 100 100" class="${collapsed ? '': 'open'}">
           <rect class="burger-ingredient" id="burger-top" y="0" width="100%" height="20%"  />
           <rect class="burger-ingredient" id="burger-patty" y="40" width="100%" height="20%"  />
           <rect class="burger-ingredient" id="burger-bottom" y="80" width="100%" height="20%"  />
         </svg>
       </button>
-      <a class="navbar-brand clawfoot-font mt-1 hidden-xs-down shimmer">Clawfoot Slumber</a>
-      <a class="navbar-brand hidden-sm-up">
+      <a class="navbar-brand clawfoot-font mt-1 hidden-xs-down shimmer"
+              data-analytics-category="Navigation" data-analytics-action="Click" data-analytics-label="Home">Clawfoot Slumber</a>
+      <a class="navbar-brand hidden-sm-up"
+              data-analytics-category="Navigation" data-analytics-action="Click" data-analytics-label="Home">
         <svg height="30px" viewBox="0 0 212.41187 239.5498">
           <path d="M 101.95209,237.84908 C 80.981447,234.07279 62.592527,225.77598 44.843007,212.08233 26.069927,197.59901 10.384077,173.54068 2.9739175,147.86523 -2.6513225,128.37437 -0.11925254,98.365547 9.0711575,75.603797 15.796757,58.946577 34.848207,35.004547 51.096287,22.790647 77.208857,3.1614774 116.14029,-4.8335426 147.76686,2.9382274 c 10.86512,2.66994 36.98392,15.0344196 47.28212,22.3830596 9.33383,6.66049 18.36413,17.35483 17.27308,20.45606 -1.24781,3.54689 -5.67176,7.73557 -8.17005,7.73557 -3.59623,0 -7.18419,-2.24366 -14.40019,-9.00484 -6.86837,-6.43548 -25.05297,-15.94987 -39.98368,-20.91993 -22.6778,-7.54887 -48.31661,-5.36683 -72.556913,6.17511 -11.65245,5.54827 -21.60049,12.83595 -30.98581,22.6994 -12.60982,13.25223 -18.66643,22.91816 -23.76375,37.92526 -2.97209,8.75018 -3.39982,11.952853 -3.42228,25.625003 -0.053,32.26787 6.08787,48.6682 26.21017,69.99889 25.98662,27.54718 53.32175,38.28015 88.530523,34.76091 6.84915,-0.68459 17.2554,-2.61484 23.125,-4.28943 17.435,-4.97417 25.46036,-9.56591 36.90777,-21.11687 9.85218,-9.94131 10.29744,-10.22745 13.3919,-8.6061 6.87798,3.60374 5.8567,11.44381 -2.54971,19.57345 -26.52351,25.65025 -66.74066,37.99125 -102.70295,31.51531 z m 5.625,-42.35766 c -17.108033,-3.94484 -30.563593,-11.48913 -42.500003,-23.82899 -7.64543,-7.90384 -12.48837,-15.90387 -13.8998,-22.96101 l -0.7877,-3.9385 17.46251,0 c 18.68641,0 20.11217,0.4522 22.10536,7.01102 1.10609,3.6397 -1.48487,5.42669 -9.1916,6.33943 l -6.45093,0.76403 4.13108,4.28711 c 5.99424,6.22063 19.36059,14.77425 26.957653,17.25117 4.93041,1.6075 9.49907,2.01639 18.25217,1.63355 10.13292,-0.44317 12.81492,-1.06746 20.29844,-4.72485 14.37918,-7.02749 31.88499,-26.06255 34.67724,-37.70655 0.73508,-3.06534 0.45267,-3.31457 -4.51012,-3.98057 -2.91186,-0.39078 -16.82555,-0.74302 -30.9193,-0.78277 -14.09375,-0.0397 -41.52657,-0.44416 -60.961823,-0.8987 l -35.33682,-0.82642 -0.7633,-3.04126 c -1.07705,-4.29132 0.53907,-20.18952 2.85281,-28.06379 5.94126,-20.219723 20.76631,-38.022803 39.20913,-47.085413 23.499493,-11.54741 44.027033,-11.55456 67.418523,-0.0235 20.391,10.05196 38.83148,32.6502 38.83148,47.586813 l 0,6.09002 -14.6875,-0.35217 -14.6875,-0.35217 0,-4.375 c 0,-4.253433 0.14761,-4.385683 5.3125,-4.759373 4.53177,-0.32789 5.3125,-0.79042 5.3125,-3.14733 0,-4.6954 -5.727,-11.51196 -16.52508,-19.669 -13.55381,-10.23877 -21.1961,-13.65324 -33.18876,-14.82828 -25.78548,-2.52645 -46.376613,9.65362 -59.002143,34.90096 -3.55789,7.114743 -7.0862,19.617503 -5.87727,20.826433 1.18166,1.18167 41.263433,2.79692 75.218253,3.03123 17.875,0.12335 38.96875,0.57213 46.875,0.99731 l 14.375,0.77305 -0.14156,6.875 c -0.29324,14.2413 -9.72078,34.1328 -21.88298,46.17169 -18.17467,17.9904 -44.81951,26.1462 -67.97546,20.80681 z" />
         </svg>
@@ -17,14 +20,16 @@
       <div class="collapse navbar-collapse ${collapsed ? '': 'show'}">
         <ul class="nav navbar-nav justify-content-center justify-content-md-start">
           <li class="nav-item" repeat.for="link of items" click.trigger="navigateTo(link)" >
-            <a class="nav-link text-uppercase ${link.isActive ? 'active' : ''} ${link.highlight ? 'text-primary': ''}" role="button"><span class="glitch-hover" data-glitch-text.bind="link.title">${link.title}</span></a>
+            <a class="nav-link text-uppercase ${link.isActive ? 'active' : ''} ${link.highlight ? 'text-primary': ''}" role="button"
+              data-analytics-category="Navigation" data-analytics-action="Click" data-analytics-label.bind="link.title"><span class="glitch-hover" data-glitch-text.bind="link.title">${link.title}</span></a>
           </li>
           
         </ul>
       </div>
       <div>
         <ul class="nav navbar-nav justify-content-end justify-content-xs-center">
-          <li class="nav-item px-0 hidden-lg-down" repeat.for="platform of social" ><a href.bind="platform.link" class="nav-link"><i class="fa ${platform.icon} fa-1x"></i></a></li>
+          <li class="nav-item px-0 hidden-lg-down" repeat.for="platform of social" ><a href.bind="platform.link" class="nav-link"
+              data-analytics-category="Social" data-analytics-action="Click" data-analytics-label.bind="platform.title"><i class="fa ${platform.icon} fa-1x"></i></a></li>
         </ul>
       </div>
     </nav>

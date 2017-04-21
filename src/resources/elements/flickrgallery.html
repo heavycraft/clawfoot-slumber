@@ -2,7 +2,8 @@
     <require from="./flickrgallery.css"></require>
     <div class="flickr-gallery card-columns">
         <div class="card" repeat.for="photo of photos">
-            <img role="button" class="flickr-gallery-image card-img-top img-fluid w-100" src.bind="photo.url_m" alt="" click.delegate="openPhoto(photo, $event)">
+            <img role="button" class="flickr-gallery-image card-img-top img-fluid w-100" src.bind="photo.url_m" alt="" click.delegate="openPhoto(photo, $event)"
+              data-analytics-category="Photos" data-analytics-action="View" data-analytics-label.bind="photo.url_m">
         </div>
     </div>
 </template>
