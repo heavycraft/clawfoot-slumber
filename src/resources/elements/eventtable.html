@@ -3,7 +3,7 @@
   <h2 class="text-uppercase">${title}</h2>
   <table class="table table-hover" if.bind="events.length">
     <tr repeat.for="event of events" role="button" click.delegate="openUrl(event.url)"
-              data-analytics-category="Event" data-analytics-action="Click" data-analytics-label.bind="event.venue.name +' - '+ (event.datetime | dateFormat)">
+              data-analytics-category="Event" data-analytics-action="Click" data-analytics-label.bind="event.venue.name +' - '+ event.datetime">
       <th scope="row">${event.datetime | dateFormat}</th>
       <td class="text-nowrap hidden-sm-down">${event.venue.city}, ${event.venue.region}</td>
       <td class="text-left">${event.venue.name} <p class="small text-muted" if.bind="event.lineup.length > 0">with ${event.lineup}</p></td>
