@@ -3,17 +3,27 @@
   <require from="../resources/elements/footer"></require>
   <require from="../resources/attributes/inview"></require>
   <div class="router-page au-animate">
+    <section id="promo" in-view>
+      <div class="container navbar-offset text-center">
+        <h2 class="text-uppercase">Coming Soon</h2>
+        <p class="lead">
+        <strong>The Stars Within You Beckon To Be Carried Forth From The Dark</strong>
+        </p>
+        <p class="small text-muted">Limited Release Full-Color 180 gram 12" LP with Gatefold Cover</p>
+        <a role="button" class="btn btn-lg btn-outline-primary text-uppercase" href="https://clawfootslumber.bandcamp.com/album/the-stars-within-you-beckon-to-be-carried-forth-from-the-dark">Pre-order Now</a>
+      </div>
+    </section>
     <section id="music" in-view class="d-flex w-100 h-100 align-items-end" >
-      <div class="container navbar-offset">
+      <div class="container">
 
         <div class="row">
           <div class="col-12 text-center">
             <img alt="Album Art" class="img-fluid" src.bind="album.artwork_url.replace('large','original')">
             <p class="lead m-4">The album <strong>${album.title}</strong></p>
-            <p>Available now on:</p>
-            <a href.bind="album.purchase_url" data-analytics-category="Music" data-analytics-action="Purchase" data-analytics-label="iTunes Purchase"><img width="100" src="assets/image/itunes.svg" alt="iTunes" align="middle" class="mx-3" /></a>
-            <a href="https://open.spotify.com/artist/5Hm3XSRX8PRpKaxVMh0Qys"
-              data-analytics-category="Music" data-analytics-action="Purchase" data-analytics-label="Spotify Purchase"><img width="100" src="assets/image/spotify.svg" alt="Spotify" align="middle" class="mx-3" /></a>
+              <p>Available now on:</p>
+              <a href.bind="album.purchase_url" data-analytics-category="Music" data-analytics-action="Purchase" data-analytics-label="iTunes Purchase"><img width="100" src="assets/image/itunes.svg" alt="iTunes" align="middle" class="mx-3" /></a>
+              <a href="https://open.spotify.com/artist/5Hm3XSRX8PRpKaxVMh0Qys"
+                data-analytics-category="Music" data-analytics-action="Purchase" data-analytics-label="Spotify Purchase"><img width="100" src="assets/image/spotify.svg" alt="Spotify" align="middle" class="mx-3" /></a>
           </div>
         </div>
       </div>
