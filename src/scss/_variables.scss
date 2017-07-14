@@ -725,7 +725,7 @@ $card-border-width:        1px !default;
 $card-border-radius:       $border-radius !default;
 $card-border-color:        rgba($black,.125) !default;
 $card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width}) !default;
-$card-cap-bg:              $gray-lightest !default;
+$card-cap-bg:              $gray-dark !default;
 $card-bg:                  $gray !default;
 
 $card-link-hover-color:    $brand-primary !default;
