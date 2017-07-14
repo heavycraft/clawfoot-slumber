@@ -9,7 +9,7 @@ export class Press {
     band: any;
     photos: any;
     videos: any;
-    playlist: ISoundCloudPlaylist;
+    playlists: ISoundCloudPlaylist[];
     flickrId = process.env.FLICKR_USER_ID;
     errors: any = {};
 
@@ -20,9 +20,7 @@ export class Press {
             .catch(error => this.errors.video = error);
         soundcloud.getUser('clawfootslumber').then(band => { this.band = band; });
         soundcloud.getUserPlaylists('clawfootslumber').then(playlists => { 
-            if(playlists.length && playlists[0].tracks.length) {
-                this.playlist = playlists[0];
-            }
+            this.playlists = playlists;
         });
     }
 

@@ -22,8 +22,10 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <h1 class="text-uppercase text-center font-weight-light">Tunes</h1>
-                        <sound-cloud-player playlist.bind="playlist"></sound-cloud-player>
-
+                        <div repeat.for="playlist of playlists">
+                            
+                            <sound-cloud-player playlist.bind="playlist"></sound-cloud-player>
+                        </div>
                         <h1 class="text-uppercase text-center font-weight-light mt-5">Bio</h1>
                         <p innerhtml.bind="band.description" class=" font-weight-light"></p>
                     </div>
