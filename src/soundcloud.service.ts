@@ -121,6 +121,7 @@ export interface ISoundCloudPlaylist {
 export class SoundCloudService {
     user: Array<ISoundCloudUser> = [];
     user_playlists: Array<ISoundCloudPlaylist> = [];
+    user_tracks: Array<ISoundCloudTrack> = [];
     params: any;
 
     constructor(private ea: EventAggregator, private http: HttpService) {
@@ -130,12 +131,29 @@ export class SoundCloudService {
 
     getUser(uid: number | string, q?: string): Promise<ISoundCloudUser> {
         if (this.user && this.user.hasOwnProperty(uid) ) { return new Promise(resolve => resolve(this.user[uid])); }
-        const userParse = (data) => { 
-            this.user[uid] = JSON.parse(data.response); 
-            this.user[uid].description = this.user[uid].description.replace(/\r/g, '').replace(/\n/g, '<br/>');
+        const userParse = (data) => {
+            const user = JSON.parse(data.response);
+            this.user[uid] = Object.assign(user, {
+                description: user.description.replace(/\r/g, '').replace(/\n/g, '<br/>')
+            }); 
             return this.user[uid];
         };
         return this.http.getData(`/users/${uid}`, this.params, userParse);
+    }
+
+    getUserTracks(uid: number | string ): Promise<ISoundCloudTrack[]> {
+        if (this.user_tracks && this.user_tracks.hasOwnProperty(uid)) { return new Promise( resolve => resolve(this.user_tracks[uid]));}
+        const parseTrackData = (data) => this.user_tracks[uid] = JSON.parse(data.response)
+            .map( (track: ISoundCloudTrack ) => Object.assign(track, { 
+                player: new Howl({
+                    src: [`${track.stream_url}?client_id=${CLIENT_ID}`],
+                    format: [track.original_format],
+                    autoplay: false,
+                    preload: false
+                }) 
+            }))
+
+        return this.http.getData(`/users/${uid}/tracks`, this.params, parseTrackData);
     }
 
     getUserPlaylists(uid: number | string, representation?: 'compact' | 'id', q?: string): Promise<Array<ISoundCloudPlaylist>> {
