@@ -3,6 +3,10 @@
   <require from="./soundcloudplayer-progressbar"></require>
   <require from="../value-converters/tracktimeformat"></require>
   <div class="card">
+    <div class="card-header d-flex align-items-center">
+      <img src.bind="playlist.artwork_url" class="img-fluid pr-3">
+      <div>${playlist.title}</div>
+    </div>
     <div if.bind="selectedTrack" class="card-block">
       <div class="d-flex w-100 justify-content-between align-items-center mb-3">
         <button if.bind="!selectedTrack.isPlaying" role="button" type="button" class="btn btn-primary" click.delegate="playTrack(selectedTrack, false)"
