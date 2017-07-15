@@ -128,3 +128,40 @@ a {
 
 }
 
+// Mailchimp
+
+#mc_embed_signup{
+
+    text-transform: uppercase;
+    background:transparent;
+    clear:left;
+    font-family: $font-family-base;
+    width:100%;
+    
+    #mc_embed_signup_scroll {
+        display:flex;
+        flex-wrap:wrap;
+        align-items:center;
+        justify-content: space-between;
+
+        label {
+            flex: 1 0 100%;
+            width: 100%;
+        }
+        
+        #mce-EMAIL {
+            flex: 1 1 auto;
+            width: auto;
+            @extend .form-control;
+        }
+        #mc-embedded-subscribe {
+            flex: 0 1 auto;
+            margin-left: $spacer / 2;
+            @extend .btn;
+            @extend .btn-sm;
+            @extend .btn-primary;
+            font-family: $font-family-base;
+            text-transform: uppercase;
+        }
+    }
+}

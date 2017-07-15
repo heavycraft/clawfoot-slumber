@@ -82,21 +82,69 @@
     </section>
     <section id="contact" in-view>
       <div class="container">
-        <div class="row">
-          <div class="col-12 text-center ">
-            <h1 class="text-uppercase font-weight-light">contact</h1>
+        <h1 class="text-uppercase font-weight-light text-center">contact</h1>
+        <div>
+          <div>
+            <dl class="row">
+              <dt class="col-12 col-sm-6 text-uppercase text-center text-sm-right">general inquiries</dt>
+              <dd class="col-12 col-sm-6 text-center text-sm-left">
+                <a class="glitch-hover"
+                  data-analytics-category="Contact"
+                  data-analytics-action="Email"
+                  data-analytics-label="Email Inquiries"
+                  href="mailto:clawfootslumber@gmail.com"
+                  data-glitch-text="clawfootslumber@gmail.com">clawfootslumber@gmail.com</a>
+              </dd>
+              <dt class="col-12 col-sm-6 text-uppercase text-center text-sm-right">booking</dt>
+              <dd class="col-12 col-sm-6 text-center text-sm-left">
+                <a class="glitch-hover"
+                  data-analytics-category="Contact"
+                  data-analytics-action="Email"
+                  data-analytics-label="Email Booking"
+                  href="mailto:alexcallenberger@gmail.com"
+                  data-glitch-text="Alex_Callenberger">Alex Callenberger</a>
+              </dd>
+              <dt class="col-12 col-sm-6 text-uppercase text-center text-sm-right">licensing</dt>
+              <dd class="col-12 col-sm-6 text-center text-sm-left">
+                <a class="glitch-hover"
+                  data-analytics-category="Contact"
+                  data-analytics-action="Email"
+                  data-analytics-label="Email Licensing"
+                  href="mailto:eric@marmosetmusic.com"
+                  data-glitch-text="Eric_Nordby">Eric Nordby</a>
+                &mdash;
+                <a href="https://www.marmosetmusic.com/">Marmoset</a>
+              </dd>
+            </dl>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12 text-center">
-            <strong>e.</strong> <a class="glitch-hover"
-              data-analytics-category="Contact" data-analytics-action="Email" data-analytics-label="Email Clawfoot Slumber" href="mailto:alexcallenberger@gmail.com" data-glitch-text="alexcallenberger@gmail.com">alexcallenberger@gmail.com</a>
+          <div class="text-center">
             <ul class="list-inline mt-5">
               <li class="list-inline-item m-3" repeat.for="platform of social"><a href.bind="platform.link"
               data-analytics-category="Social" data-analytics-action="Click" data-analytics-label.bind="platform.title"><i class="fa ${platform.icon} fa-5x"></i></a></li>
             </ul>
           </div>
+
+          
         </div>
+      </div>
+    </section>
+    <section id="mailchimp">
+      <div class="container" style="max-width:750px;">
+        <!-- Begin MailChimp Signup Form -->
+          <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+          <div id="mc_embed_signup">
+            <form action="//Clawfootslumber.us16.list-manage.com/subscribe/post?u=a0f32e7d2b48955df5cc0b15b&amp;id=400ee41554" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div id="mc_embed_signup_scroll">
+                  <label for="mce-EMAIL">Become a Dreamer &mdash; Join the Mailing List</label>
+                  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required>
+                  <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_a0f32e7d2b48955df5cc0b15b_400ee41554" tabindex="-1" value=""></div>
+                  <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                </div>
+            </form>
+          </div>
+          <!--End mc_embed_signup-->
+
       </div>
     </section>
     <heavy-craft-footer></heavy-craft-footer>
